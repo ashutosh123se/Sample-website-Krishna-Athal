@@ -1,0 +1,82 @@
+.cta {
+  background: var(--amber-gold);
+  padding: 120px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle shimmer animation on bg */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255,255,255,0.12) 50%,
+    transparent 60%
+  );
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6vw, 88px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  color: var(--obsidian);
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 600;
+}
+
+.sub {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+.ctaBtn {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  transition: transform 0.3s var(--ease-smooth), all 0.4s var(--ease-out-expo) !important;
+  background: var(--obsidian);
+  color: var(--amber-gold);
+  padding: 18px 40px;
+  font-size: 14px;
+}
+
+.ctaBtn:hover {
+  background: var(--warm-ivory);
+  color: var(--obsidian);
+}
+
+@media (max-width: 768px) {
+  .cta { padding: 80px 24px; }
+  .title { font-size: 48px; }
+}

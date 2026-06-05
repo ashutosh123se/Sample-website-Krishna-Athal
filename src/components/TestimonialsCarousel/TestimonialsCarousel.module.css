@@ -1,0 +1,218 @@
+/* MARQUEE SECTION */
+.marqueeSection {
+  background: var(--obsidian);
+  padding: 120px 0 160px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.ambientGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1400px;
+  height: 800px;
+  background: radial-gradient(ellipse at center, rgba(200, 134, 10, 0.08), transparent 60%);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Header */
+.header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 80px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.badgeWrapper {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid rgba(200, 134, 10, 0.3);
+  border-radius: 100px;
+  background: rgba(200, 134, 10, 0.05);
+}
+
+.badgeLabel {
+  font-family: var(--font-counter);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--amber-gold);
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 300;
+  color: var(--warm-ivory);
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.titleHighlight {
+  font-style: italic;
+  color: var(--amber-gold);
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--silver-mist);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Marquee Tracks */
+.marqueeTrackWrapper {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  /* Very slight tilt for dynamic energy */
+  transform: rotate(-1deg) scale(1.05);
+}
+
+.track {
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+}
+
+.marquee {
+  display: flex;
+  gap: 32px;
+  padding-right: 32px; /* same as gap */
+  white-space: nowrap;
+  width: max-content;
+}
+
+.moveLeft { animation: scrollLeft 45s linear infinite; }
+.moveRight { animation: scrollRight 50s linear infinite; }
+.moveLeftFast { animation: scrollLeft 35s linear infinite; }
+
+.track:hover .marquee {
+  animation-play-state: paused;
+}
+
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes scrollRight {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.testCard {
+  width: 450px;
+  flex-shrink: 0;
+  background: rgba(26, 26, 30, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  transition: all 0.4s var(--ease-out-expo);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0.6; /* Dim by default in the marquee */
+  cursor: grab;
+}
+
+.testCard:hover {
+  opacity: 1;
+  background: rgba(26, 26, 30, 0.85);
+  border-color: rgba(200, 134, 10, 0.3);
+  border-top-color: var(--amber-gold);
+  transform: scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(200, 134, 10, 0.15);
+  z-index: 10;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(200, 134, 10, 0.4);
+  background: var(--obsidian);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--amber-gold);
+  flex-shrink: 0;
+}
+
+.cardName {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--warm-ivory);
+}
+
+.cardRole {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--silver-mist);
+  opacity: 0.8;
+}
+
+.cardStars {
+  color: var(--amber-gold);
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.cardQuote {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--silver-mist);
+  white-space: normal; /* Fix for flex marquee */
+}
+
+/* Featured Quote Overlay Wrapper */
+.featuredQuoteOverlayWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .testCard { width: 380px; padding: 32px; }
+}
+
+@media (max-width: 768px) {
+  .marqueeTrackWrapper { transform: rotate(0) scale(1); gap: 24px; }
+  .testCard { width: 320px; padding: 24px; }
+  .featuredQuoteOverlayWrapper { position: relative; transform: none; top: auto; left: auto; height: auto; margin-top: 60px; pointer-events: auto; }
+}

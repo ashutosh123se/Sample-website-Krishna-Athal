@@ -1,0 +1,11 @@
+.scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--amber-gold);
+  z-index: 10000;
+  pointer-events: none;
+  transition: width 0.1s linear;
+}

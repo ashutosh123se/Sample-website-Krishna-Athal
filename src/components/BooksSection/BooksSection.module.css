@@ -1,0 +1,193 @@
+.books {
+  background: var(--warm-ivory);
+  padding: 160px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.books::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.bgText {
+  position: absolute;
+  top: 40px;
+  left: -40px;
+  font-family: var(--font-display);
+  font-size: clamp(160px, 20vw, 300px);
+  font-weight: 300;
+  color: var(--amber-gold);
+  opacity: 0.03;
+  line-height: 0.8;
+  pointer-events: none;
+  user-select: none;
+}
+
+.inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  margin-bottom: 100px;
+}
+
+.headerFlex {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.label {
+  font-family: var(--font-counter);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--amber-gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 5vw, 64px);
+  font-weight: 700;
+  color: var(--obsidian);
+  line-height: 1.1;
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--amber-gold);
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  text-decoration: none;
+  background: transparent;
+  cursor: none;
+}
+
+/* Alternate layout for every even item */
+.card:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.coverWrap {
+  position: relative;
+  width: 440px;
+  height: 600px;
+  flex-shrink: 0;
+  box-shadow: 20px 30px 60px rgba(0,0,0,0.15), -10px -10px 30px rgba(255,255,255,0.8);
+  transition: transform 0.6s var(--ease-out-expo), box-shadow 0.6s var(--ease-out-expo);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.coverHighlight {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.8s;
+}
+
+.card:hover .coverWrap {
+  transform: translateY(-12px) rotate(1deg);
+  box-shadow: 30px 40px 80px rgba(0,0,0,0.2), -10px -10px 30px rgba(255,255,255,0.8);
+}
+
+.card:hover .coverHighlight {
+  transform: translateX(100%);
+}
+
+.cardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+}
+
+.genre {
+  font-family: var(--font-counter);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--amber-gold);
+  text-transform: uppercase;
+}
+
+.bookTitle {
+  font-family: var(--font-heading);
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--obsidian);
+  line-height: 1.15;
+  transition: color 0.3s;
+}
+
+.card:hover .bookTitle {
+  color: var(--amber-gold);
+}
+
+.bookSubtitle {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--terracotta);
+  font-style: italic;
+}
+
+.bookDesc {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--warm-gray);
+  margin-top: 12px;
+}
+
+.readLink {
+  font-family: var(--font-accent);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--obsidian);
+  text-transform: uppercase;
+  margin-top: 24px;
+  align-self: flex-start;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .inner { padding: 0 48px; }
+  .card { gap: 60px; }
+  .coverWrap { width: 340px; height: 480px; }
+}
+
+@media (max-width: 768px) {
+  .inner { padding: 0 24px; }
+  .headerFlex { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .card, .card:nth-child(even) { flex-direction: column; gap: 40px; text-align: center; }
+  .coverWrap { width: 100%; max-width: 340px; height: 480px; margin: 0 auto; }
+  .cardContent { max-width: 100%; align-items: center; }
+  .readLink { align-self: center; }
+  .grid { gap: 80px; }
+}

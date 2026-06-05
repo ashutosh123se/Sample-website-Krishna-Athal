@@ -1,0 +1,383 @@
+.page { overflow-x: hidden; }
+
+/* HERO */
+.hero {
+  background: var(--obsidian);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.heroContent {
+  text-align: center;
+  max-width: 900px;
+  padding: 140px 40px 120px;
+  position: relative;
+  z-index: 1;
+}
+
+.heroLabel {
+  font-family: var(--font-counter);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--amber-gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7vw, 108px);
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: -2px;
+  color: var(--warm-ivory);
+  margin-bottom: 28px;
+}
+
+.heroTitle em {
+  font-style: italic;
+  color: var(--amber-gold);
+}
+
+.heroSub {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--silver-mist);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.heroDiagonal {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: var(--warm-ivory);
+  clip-path: polygon(0 100%, 100% 40%, 100% 100%);
+}
+
+/* SERVICE SECTIONS */
+.serviceSection {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  min-height: 80vh;
+  background: var(--warm-ivory);
+  position: relative;
+}
+
+.serviceSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.reversed { direction: rtl; }
+.reversed > * { direction: ltr; }
+
+.serviceImageCol {
+  background: var(--obsidian);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.serviceImageBg {
+  position: absolute;
+  inset: 0;
+  background: url('/service-bg.png') center / cover no-repeat;
+  opacity: 0.25;
+}
+
+.serviceImageCol::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 80% at 50% 50%, rgba(200,134,10,0.08) 0%, transparent 70%),
+    linear-gradient(135deg, rgba(200,134,10,0.06) 0%, transparent 60%),
+    linear-gradient(to bottom, rgba(9,9,11,0.5) 0%, rgba(26,26,30,0.9) 100%);
+  z-index: 1;
+}
+
+.serviceImageCol::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200,134,10,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,134,10,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 1;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+}
+
+.serviceGhostNum {
+  font-family: var(--font-counter);
+  font-size: clamp(140px, 18vw, 240px);
+  color: var(--amber-gold);
+  opacity: 0.12;
+  z-index: 2;
+  user-select: none;
+  letter-spacing: -8px;
+  text-shadow: 0 0 80px rgba(200,134,10,0.3);
+}
+
+.serviceIconWrap {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.serviceIconLine {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--amber-gold), transparent);
+}
+
+.serviceIconTag {
+  font-family: var(--font-counter);
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--amber-gold);
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+.serviceContentCol {
+  padding: 80px 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.serviceLabel {
+  font-family: var(--font-counter);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--amber-gold);
+  text-transform: uppercase;
+}
+
+.serviceTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 700;
+  color: var(--obsidian);
+  line-height: 1.2;
+}
+
+.serviceBody {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--warm-gray);
+}
+
+.outcomes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.outcome {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--obsidian);
+}
+
+.outcomeCheck {
+  color: var(--amber-gold);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* PRICING */
+.pricing {
+  background: var(--parchment);
+  padding: 120px 0;
+}
+
+.pricingInner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.pricingHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.pricingLabel {
+  font-family: var(--font-counter);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--amber-gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.pricingTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 700;
+  color: var(--obsidian);
+  line-height: 1.2;
+}
+
+.pricingTitle em { font-style: italic; font-weight: 400; color: var(--amber-gold); }
+
+.plansGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  border: 1px solid rgba(200,134,10,0.1);
+}
+
+.planCard {
+  background: white;
+  padding: 40px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 3px solid rgba(200,134,10,0.15);
+  position: relative;
+  transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo);
+}
+
+.planCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.1);
+  z-index: 2;
+}
+
+.planPopular {
+  border-top: 5px solid var(--amber-gold);
+  background: rgba(200,134,10,0.03);
+}
+
+.planPremium {
+  border-top: 5px solid var(--terracotta);
+}
+
+.planBadge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--amber-gold);
+  color: var(--obsidian);
+  font-family: var(--font-accent);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+.planBadgePremium { background: var(--terracotta); color: white; }
+
+.planName {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--obsidian);
+}
+
+.planPrice {
+  font-family: var(--font-counter);
+  font-size: 52px;
+  color: var(--amber-gold);
+  line-height: 1;
+}
+
+.planSessions {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: var(--warm-gray);
+  text-transform: uppercase;
+}
+
+.planDesc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--warm-gray);
+  line-height: 1.6;
+}
+
+.planFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  padding-top: 8px;
+  border-top: 1px solid rgba(200,134,10,0.08);
+}
+
+.planFeature {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--obsidian);
+  line-height: 1.5;
+}
+
+.featureCheck { color: var(--amber-gold); flex-shrink: 0; }
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .plansGrid { grid-template-columns: repeat(2, 1fr); }
+  .pricingInner { padding: 0 48px; }
+}
+
+@media (max-width: 1024px) {
+  .serviceSection { grid-template-columns: 1fr; min-height: auto; }
+  .serviceImageCol { min-height: 300px; }
+  .serviceContentCol { padding: 60px 48px; }
+  .reversed { direction: ltr; }
+}
+
+@media (max-width: 768px) {
+  .pricingInner { padding: 0 24px; }
+  .plansGrid { grid-template-columns: 1fr; }
+  .serviceContentCol { padding: 48px 24px; }
+}

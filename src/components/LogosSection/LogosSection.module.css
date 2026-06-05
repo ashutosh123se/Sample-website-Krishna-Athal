@@ -1,0 +1,81 @@
+.logosSection {
+  background: var(--obsidian);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ambientGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(200, 134, 10, 0.06), transparent 70%);
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.header {
+  position: relative;
+  z-index: 15;
+  text-align: center;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 300;
+  color: var(--warm-ivory);
+  margin-bottom: 20px;
+}
+
+.titleLine {
+  width: 40px;
+  height: 2px;
+  background: var(--amber-gold);
+}
+
+.logosGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 32px 48px; /* Tighter gap */
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  padding: 0 24px;
+}
+
+.logoItem {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 32px); /* Smaller font for compact fit */
+  font-weight: 500;
+  color: var(--silver-mist);
+  opacity: 0.4;
+  cursor: default;
+  transition: opacity 0.3s ease;
+}
+
+.logoItem:hover {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .logosSection {
+    padding: 80px 0;
+  }
+  .logosGrid {
+    gap: 20px 24px;
+  }
+}

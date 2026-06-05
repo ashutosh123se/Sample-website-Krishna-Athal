@@ -1,0 +1,266 @@
+.process {
+  background: var(--obsidian);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Giant decorative word */
+.bgWord {
+  position: absolute;
+  font-family: var(--font-counter);
+  font-size: clamp(120px, 18vw, 260px);
+  color: var(--warm-ivory);
+  opacity: 0.02;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: 16px;
+}
+
+/* Container */
+.inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--section-pad-h);
+  position: relative;
+  z-index: 1;
+}
+
+/* Top bar */
+.topBar {
+  padding: 80px 0 60px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.topTag {
+  font-family: var(--font-counter);
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: var(--amber-gold);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.topLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(200,134,10,0.3), transparent);
+}
+
+.topNote {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--silver-mist);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   STEPS — full width alternating rows
+   ============================================================ */
+.steps {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 40vh;
+  position: relative;
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+  border-top: 1px solid rgba(200,134,10,0.06);
+}
+
+.stepVisible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Alternate: even steps come from right */
+.step:nth-child(even) {
+  transform: translateX(40px);
+  grid-template-columns: 1fr 1fr;
+}
+
+.step:nth-child(even).stepVisible {
+  transform: translateX(0);
+}
+
+.step:nth-child(even) .stepNumWrap {
+  order: 2;
+}
+.step:nth-child(even) .stepContent {
+  order: 1;
+}
+
+.stepDark {
+  background: transparent;
+}
+
+.stepLight {
+  background: rgba(245,240,232,0.015);
+}
+
+/* ============================================================
+   GIANT NUMBER (left/right)
+   ============================================================ */
+.stepNumWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  min-height: 320px;
+  overflow: hidden;
+}
+
+.stepNum {
+  font-family: var(--font-counter);
+  font-size: clamp(160px, 18vw, 280px);
+  line-height: 0.85;
+  color: var(--amber-gold);
+  opacity: 0.08;
+  user-select: none;
+  letter-spacing: -8px;
+  transition: opacity 0.5s, text-shadow 0.5s;
+}
+
+.stepNumGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(200,134,10,0.06), transparent 70%);
+  transition: opacity 0.5s;
+  opacity: 0;
+}
+
+.step:hover .stepNum {
+  opacity: 0.18;
+  text-shadow: 0 0 80px rgba(200,134,10,0.3);
+}
+
+.step:hover .stepNumGlow {
+  opacity: 1;
+}
+
+/* ============================================================
+   CONTENT
+   ============================================================ */
+.stepContent {
+  padding: 60px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stepIndex {
+  font-family: var(--font-counter);
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--amber-gold);
+  text-transform: uppercase;
+}
+
+.stepTitle {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 300;
+  color: var(--warm-ivory);
+  white-space: pre-line;
+  line-height: 1.1;
+}
+
+.stepBody {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--silver-mist);
+  max-width: 440px;
+}
+
+.stepLink {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-accent);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--amber-gold);
+  text-decoration: none;
+  padding-bottom: 4px;
+  position: relative;
+  align-self: flex-start;
+  margin-top: 8px;
+  transition: gap 0.3s;
+  gap: 8px;
+}
+
+.stepLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--amber-gold);
+  transition: width 0.4s var(--ease-out-expo);
+}
+
+.step:hover .stepLink::after {
+  width: 100%;
+}
+
+/* Vertical connector */
+.connector {
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.connectorLine {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(200,134,10,0.3), transparent);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .topBar { padding: 60px 48px 40px; }
+  .stepContent { padding: 48px; }
+}
+
+@media (max-width: 900px) {
+  .step, .step:nth-child(even) {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .stepNumWrap { min-height: 160px; padding: 40px; }
+  .stepNum { font-size: 140px; }
+  .stepContent { padding: 0 40px 60px; }
+  .step:nth-child(even) .stepNumWrap { order: 1; }
+  .step:nth-child(even) .stepContent { order: 2; }
+}
+
+@media (max-width: 768px) {
+  .topBar { padding: 40px 24px 32px; flex-wrap: wrap; gap: 16px; }
+  .topNote { display: none; }
+  .stepContent { padding: 0 24px 48px; }
+  .stepNumWrap { padding: 32px 24px; }
+}

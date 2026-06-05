@@ -1,0 +1,76 @@
+.featuredQuoteOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  pointer-events: none; /* Let clicks pass through to marquee */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.featuredQuoteInner {
+  background: rgba(9, 9, 11, 0.7);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 80px 100px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+  width: 100%;
+  max-width: 1000px;
+}
+
+.featuredMark {
+  font-family: var(--font-display);
+  font-size: 200px;
+  color: var(--warm-ivory);
+  opacity: 0.05;
+  position: absolute;
+  top: -40px;
+  left: 60px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.quoteWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.featuredText {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 48px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--warm-ivory);
+  line-height: 1.5;
+  max-width: 800px;
+  position: relative;
+}
+
+.featuredAttrib {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--silver-mist);
+  letter-spacing: 1px;
+}
+
+@media (max-width: 1024px) {
+  .featuredQuoteInner { padding: 60px; width: 90%; }
+}
+
+@media (max-width: 768px) {
+  .featuredQuoteOverlay { position: relative; transform: none; top: auto; left: auto; margin-top: 60px; pointer-events: auto; }
+  .featuredQuoteInner { padding: 40px 24px; width: auto; margin: 0 24px; }
+}

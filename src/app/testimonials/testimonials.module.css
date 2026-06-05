@@ -1,0 +1,259 @@
+.page { overflow-x: hidden; }
+
+/* HERO */
+.hero {
+  background: var(--obsidian);
+  padding: 160px 40px 100px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.heroContent {
+  max-width: 800px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6vw, 88px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  color: var(--warm-ivory);
+}
+
+.heroTitle em { font-style: italic; color: var(--amber-gold); }
+
+.heroSub {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--silver-mist);
+}
+
+.ratingBlock {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 28px;
+  border: 1px solid rgba(200,134,10,0.2);
+  background: rgba(245,240,232,0.04);
+  margin-top: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.stars {
+  color: var(--amber-gold);
+  font-size: 22px;
+  letter-spacing: 4px;
+}
+
+.ratingText {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--silver-mist);
+}
+
+.ratingText strong { color: var(--warm-ivory); font-weight: 500; }
+
+.googleBadge {
+  font-family: var(--font-accent);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--amber-gold);
+  border: 1px solid rgba(200,134,10,0.3);
+  padding: 4px 12px;
+}
+
+/* MARQUEE SECTION */
+.marqueeSection {
+  background: var(--obsidian);
+  padding: 100px 0 160px 0;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ambientGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1400px;
+  height: 800px;
+  background: radial-gradient(ellipse at center, rgba(200, 134, 10, 0.08), transparent 60%);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.marqueeTrackWrapper {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  /* Very slight tilt for dynamic energy */
+  transform: rotate(-1deg) scale(1.05);
+}
+
+.track {
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+}
+
+.marquee {
+  display: flex;
+  gap: 32px;
+  padding-right: 32px; /* same as gap */
+  white-space: nowrap;
+  width: max-content;
+}
+
+.moveLeft { animation: scrollLeft 45s linear infinite; }
+.moveRight { animation: scrollRight 50s linear infinite; }
+.moveLeftFast { animation: scrollLeft 35s linear infinite; }
+
+.track:hover .marquee {
+  animation-play-state: paused;
+}
+
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes scrollRight {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.testCard {
+  width: 450px;
+  flex-shrink: 0;
+  background: rgba(26, 26, 30, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  transition: all 0.4s var(--ease-out-expo);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0.6; /* Dim by default in the marquee */
+  cursor: grab;
+}
+
+.testCard:hover {
+  opacity: 1;
+  background: rgba(26, 26, 30, 0.85);
+  border-color: rgba(200, 134, 10, 0.3);
+  border-top-color: var(--amber-gold);
+  transform: scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(200, 134, 10, 0.15);
+  z-index: 10;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(200, 134, 10, 0.4);
+  background: var(--obsidian);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--amber-gold);
+  flex-shrink: 0;
+}
+
+.cardName {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--warm-ivory);
+}
+
+.cardRole {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--silver-mist);
+  opacity: 0.8;
+}
+
+.cardStars {
+  color: var(--amber-gold);
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.cardQuote {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--silver-mist);
+  white-space: normal; /* Fix for flex marquee */
+}
+
+/* CTA */
+.ctaBand {
+  background: var(--amber-gold);
+  padding: 100px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.ctaTitle {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 300;
+  color: var(--obsidian);
+  line-height: 1.1;
+}
+
+.ctaTitle em { font-style: italic; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .testCard { width: 380px; padding: 32px; }
+}
+
+@media (max-width: 768px) {
+  .marqueeTrackWrapper { transform: rotate(0) scale(1); gap: 24px; }
+  .testCard { width: 320px; padding: 24px; }
+}

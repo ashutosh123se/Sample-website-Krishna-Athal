@@ -1,0 +1,264 @@
+.section {
+  background: var(--charcoal);
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+/* Header */
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 60px;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.label {
+  font-family: var(--font-counter);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--amber-gold);
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 300;
+  color: var(--warm-ivory);
+  line-height: 1.1;
+}
+.title em { font-style: italic; color: var(--amber-gold); }
+
+.sub {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--silver-mist);
+  line-height: 1.7;
+  max-width: 400px;
+}
+
+.followBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  border: 1px solid rgba(200,134,10,0.3);
+  color: var(--amber-gold);
+  font-family: var(--font-accent);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s var(--ease-out-expo);
+  align-self: flex-start;
+}
+.followBtn:hover {
+  background: var(--amber-gold);
+  color: var(--obsidian);
+  border-color: var(--amber-gold);
+}
+.followBtn:hover .btn-arrow { transform: translateX(6px); }
+.igIcon { display: flex; align-items: center; }
+
+/* Instagram stats */
+.headerStats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid rgba(200,134,10,0.1);
+  background: rgba(200,134,10,0.03);
+}
+.igStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 24px 36px;
+}
+.igStatNum {
+  font-family: var(--font-counter);
+  font-size: 36px;
+  color: var(--amber-gold);
+  line-height: 1;
+}
+.igStatLabel {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--silver-mist);
+}
+.igDivider {
+  width: 1px;
+  height: 60px;
+  background: rgba(200,134,10,0.1);
+}
+
+/* Scattered Container */
+.scatterContainer {
+  position: relative;
+  width: 100%;
+  height: 600px; /* fixed height to allow absolute positioning of cards */
+  margin-top: 20px;
+}
+
+/* Individual Post Card - styled like a real polaroid/instagram post */
+.postCard {
+  position: absolute;
+  width: 280px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--obsidian);
+  transition: transform 0.5s var(--ease-bounce), box-shadow 0.5s, z-index 0s;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.postCard:hover {
+  z-index: 10 !important;
+  transform: scale(1.05) rotate(0deg) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(200, 134, 10, 0.3);
+}
+
+/* Header inside card */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+}
+.cardAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  background: #eee;
+}
+.cardUsername {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  color: #262626;
+}
+
+/* Image Wrap */
+.cardImageWrap {
+  width: 100%;
+  aspect-ratio: 1;
+  position: relative;
+  background: #f0f0f0;
+}
+
+/* Footer inside card */
+.cardFooter {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cardAction {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #262626;
+}
+.cardAction span {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+}
+.cardCaption {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.4;
+  color: #262626;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.cardCaption strong {
+  font-weight: 600;
+}
+
+/* Specific Card Positioning (Scattered effect) */
+.card0 { top: 20px; left: 5%; transform: rotate(-4deg); z-index: 2; }
+.card1 { top: -30px; left: 25%; transform: rotate(3deg); z-index: 1; }
+.card2 { top: 60px; left: 45%; transform: rotate(-2deg); z-index: 3; }
+.card3 { top: -10px; left: 65%; transform: rotate(5deg); z-index: 2; }
+.card4 { top: 40px; right: 5%; transform: rotate(-3deg); z-index: 1; }
+.card5 { top: 220px; left: 15%; transform: rotate(6deg); z-index: 4; }
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .inner { padding: 0 48px; }
+  .header { grid-template-columns: 1fr; gap: 32px; }
+  .headerStats { align-self: flex-start; }
+  
+  .scatterContainer { height: 500px; }
+  .card0 { left: 0%; }
+  .card1 { left: 20%; top: -10px; }
+  .card2 { left: 40%; top: 50px; }
+  .card3 { left: 60%; top: 10px; }
+  .card4 { right: 0%; top: 40px; }
+  .card5 { display: none; } /* Hide some to save space */
+}
+
+@media (max-width: 768px) {
+  .inner { padding: 0 24px; }
+  .headerStats { display: none; }
+  
+  /* On mobile, fall back to a horizontal scrolling list or simple grid instead of scattered to save space */
+  .scatterContainer {
+    height: auto;
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 20px;
+    margin-top: 0;
+    scroll-snap-type: x mandatory;
+  }
+  .postCard {
+    position: relative;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+    flex-shrink: 0;
+    width: 260px;
+    scroll-snap-align: start;
+  }
+}
