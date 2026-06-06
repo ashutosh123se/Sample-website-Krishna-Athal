@@ -54,9 +54,12 @@ export default function HisStory() {
               initial={{ opacity: 0, x: 50, y: 50 }}
               whileInView={{ opacity: 1, x: 0, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+              transition={{
+                opacity: { duration: 1, delay: 0.3, ease: "easeOut" },
+                x: { duration: 1, delay: 0.3, ease: "easeOut" },
+                y: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+              }}
               animate={{ y: [0, -20, 0] }} // Continuous floating animation
-              transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
               className="absolute right-0 bottom-0 w-[60%] h-[400px] rounded-2xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.8)] border border-brand-red/30 z-20"
             >
               <Image 
