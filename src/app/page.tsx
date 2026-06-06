@@ -1,38 +1,38 @@
-import type { Metadata } from "next";
-import HeroSection from "@/components/HeroSection/HeroSection";
-import StatsSection from "@/components/StatsSection/StatsSection";
-import AboutSection from "@/components/AboutSection/AboutSection";
-import ServicesSection from "@/components/ServicesSection/ServicesSection";
-import TransformationSection from "@/components/TransformationSection/TransformationSection";
-import ProcessSection from "@/components/ProcessSection/ProcessSection";
-import TestimonialsCarousel from "@/components/TestimonialsCarousel/TestimonialsCarousel";
-import PricingSection from "@/components/PricingSection/PricingSection";
-import LogosSection from "@/components/LogosSection/LogosSection";
-import InstagramSection from "@/components/InstagramSection/InstagramSection";
-import BooksSection from "@/components/BooksSection/BooksSection";
-import CtaSection from "@/components/CtaSection/CtaSection";
+import type { Metadata } from 'next';
+import HeroSection from '@/components/sections/HeroSection';
+import TrustBar from '@/components/sections/TrustBar';
+import ServicesGrid from '@/components/sections/ServicesGrid';
+import AboutStrip from '@/components/sections/AboutStrip';
+import CoachingProcess from '@/components/sections/CoachingProcess';
+import PricingSection from '@/components/sections/PricingSection';
+import TestimonialsSection from '@/components/sections/TestimonialsSection';
+import LogoOrbit from '@/components/sections/LogoOrbit';
+import GoogleReviews from '@/components/sections/GoogleReviews';
+import InstagramFeed from '@/components/sections/InstagramFeed';
+import BookStrip from '@/components/sections/BookStrip';
+import CTABanner from '@/components/sections/CTABanner';
 
 export const metadata: Metadata = {
-  title: "Dr. Krishna Athal — Life & Executive Coach | India · Mauritius · Singapore",
+  title: 'Dr Krishna Athal | Top-Ranked Life & Executive Coach — India, Mauritius, Singapore',
   description:
-    "Globally recognised Life & Executive Coach and Leadership Consultant. Transformative coaching for visionaries, leaders, and changemakers across India, Mauritius, and Singapore.",
+    'Dr Krishna Athal is a globally recognised Life & Executive Coach with a PhD. 500+ clients. Coaching across India, Mauritius & Singapore. Book a free 15-min consultation.',
 };
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <StatsSection />
-      <AboutSection />
-      <ServicesSection />
-      <TransformationSection />
-      <ProcessSection />
-      <TestimonialsCarousel />
+      <TrustBar />
+      <ServicesGrid />
+      <AboutStrip />
+      <CoachingProcess />
+      <TestimonialsSection />
       <PricingSection />
-      <LogosSection />
-      <InstagramSection />
-      <BooksSection />
-      <CtaSection />
+      <LogoOrbit />
+      <GoogleReviews />
+      <InstagramFeed />
+      <BookStrip />
+      <CTABanner />
     </>
   );
 }
