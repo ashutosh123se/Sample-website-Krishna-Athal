@@ -46,9 +46,11 @@ export default function AboutStrip() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+              transition={{
+                opacity: { duration: 1, delay: 0.3, ease: "easeOut" },
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+              }}
               animate={{ y: [0, -15, 0] }} // Continuous floating animation
-              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
               className="absolute right-0 bottom-0 w-[55%] h-[380px] rounded-2xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.8)] border border-brand-red/30 z-20"
             >
               <Image 
